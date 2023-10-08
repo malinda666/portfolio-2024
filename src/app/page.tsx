@@ -1,7 +1,12 @@
 export default function Home() {
   return (
-    <main className="h-[200vh]">
-      <div className="text-9xl">hello</div>
+    <main>
+      <section className="grid">
+        <div className="text-9xl font-title">UNCODE</div>
+      </section>
+      <section>
+        <div className="text-9xl">Hello</div>
+      </section>
     </main>
   )
 }

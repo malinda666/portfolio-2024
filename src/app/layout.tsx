@@ -9,16 +9,16 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 const _description =
-  'Uncode crafts exceptional websites tailored to your brand, blending cutting-edge tech with user-centric design. Elevate your online presence with us today!'
+  "Let's craft exceptional websites tailored to your brand, blending cutting-edge tech with user-centric design. Elevate your online presence with us today!"
 
 export const metadata: Metadata = {
   title: {
-    default: 'UNCODE',
-    template: '%s | UNCODE',
+    default: 'ANPM',
+    template: '%s | ANPM',
   },
   description: _description,
   generator: 'Next.js',
-  applicationName: 'Uncode',
+  applicationName: 'ANPM',
   referrer: 'origin-when-cross-origin',
   keywords: ['Web Development', 'React', 'Frontend'],
   authors: [{ name: 'Anupama Weerawardhana' }],
