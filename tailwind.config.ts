@@ -18,7 +18,8 @@ const config: Config = {
         secondary: '#FF914D',
       },
       fontFamily: {
-        title: ['Inter', 'sans-serif'],
+        uncutB: ['Uncut Sans Bold', 'sans-serif'],
+        uncut: ['Uncut Sans', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       animation: {
