@@ -2,13 +2,16 @@ import Hero from '@/components/views/home/Hero'
 
 export default function Home() {
   return (
-    <main>
+    <>
       <section className="grid">
         <Hero />
       </section>
-      <section>
+      <section className="grid bg-transparent">
         <div className="text-9xl">Hello</div>
       </section>
-    </main>
+      <section className="grid bg-transparent">
+        <div className="text-9xl">Hello</div>
+      </section>
+    </>
   )
 }

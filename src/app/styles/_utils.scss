@@ -5,16 +5,23 @@
   grid-area: 1/1/-1/-1;
 }
 
-.text-big {
-  font-size: clamp(2rem, 22vw, 14rem);
-  line-height: 1;
+.text {
+  &-bigger {
+    font-size: clamp(5rem, 27vw, 20rem);
+    line-height: 1;
+  }
+  &-big {
+    font-size: clamp(2rem, 22vw, 14rem);
+    line-height: 1;
+  }
+  &-mid {
+    font-size: clamp(1.5rem, 7vw, 5rem);
+  }
+  &-small {
+    font-size: 1.5rem;
+  }
 }
-.text-mid {
-  font-size: clamp(1.5rem, 7vw, 5rem);
-}
-.text-small {
-  font-size: 1.5rem;
-}
+
 .char {
   transform-style: preserve-3d;
   transform-origin: bottom;

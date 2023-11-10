@@ -5,6 +5,7 @@ import {
 import './styles/globals.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import GlobalWrapper from '@/components/shared/GlobalWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,10 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ScrollContextProvider>
-          <ScrollWrapper />
-          {children}
-        </ScrollContextProvider>
+        <main>
+          <GlobalWrapper>{children}</GlobalWrapper>
+        </main>
       </body>
     </html>
   )
