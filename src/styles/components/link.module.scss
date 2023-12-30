@@ -1,0 +1,76 @@
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 4rem;
+  align-items: start;
+  overflow: hidden;
+  height: 100%;
+
+  .text {
+    background-image: linear-gradient(
+      to right,
+      var(--secondary),
+      var(--secondary) 50%,
+      var(--primary-foreground) 50%,
+      var(--primary-foreground)
+    );
+    background-size: 200% 100%;
+    background-position: 100% 50%;
+    display: inline-block;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    padding-right: var(--size6);
+    padding-bottom: var(--size6);
+    transition: background-position var(--transition);
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .arrows {
+    position: relative;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    margin-left: var(--size5);
+    .arrow {
+      position: absolute;
+      will-change: transform;
+      transition: transform var(--transition);
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      &.upper {
+        color: var(--primary-foreground);
+      }
+      &.lower {
+        transform: translate(-90%, 90%);
+      }
+    }
+  }
+
+  &:hover {
+    .arrows .arrow {
+      &.upper {
+        transform: translate(100%, -100%);
+      }
+      &.lower {
+        transform: translate(0%, 0%);
+      }
+    }
+
+    .text {
+      background-position: 0 50%;
+    }
+  }
+}

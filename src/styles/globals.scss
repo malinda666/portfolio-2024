@@ -130,6 +130,7 @@ table {
 
 // custom
 @import "./variables";
+@import "./mixins";
 @import "./fonts";
 
 body {
@@ -143,4 +144,9 @@ body {
 section {
   min-height: 100vh;
   position: relative;
+  padding-top: var(--size1);
+}
+
+img {
+  object-fit: cover;
 }

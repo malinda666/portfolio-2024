@@ -11,16 +11,15 @@ const Hero = () => {
     <section>
       <div className={s.wrapper}>
         <h1 className={s.title}>
-          <div className={`${s.title__inner} ${s.left}`}>
+          <div className={s.title__inner}>
             <span className={s.title__inner___item}>Unlock</span>
           </div>
-          <div className={`${s.title__inner} ${s.right}`}>
+          <div className={s.title__inner}>
             <span className={s.title__inner___item}>Your</span>
           </div>
-          <div className={`${s.title__inner} ${s.left}`}>
-            <span className={s.title__inner___item}>Digital</span>
-          </div>
-          <div className={`${s.title__inner} ${s.right}`}>
+          {/* <div className={s.title__inner}></div> */}
+          <div className={s.title__inner}>
+            <span className={s.title__inner___item}>Digital&nbsp;</span>
             <span className={s.title__inner___item}>Potential</span>
           </div>
         </h1>
@@ -30,7 +29,7 @@ const Hero = () => {
               Elevating brands with tailored web development
             </span>
             <span className={s.description__paragraph___inner}>
-              where innovation, design, and performance converge seamlessly
+              where innovation, design, and performance converge seamlessly.
             </span>
           </p>
           <ParallaxImage src={image} className={s.description__bg} />

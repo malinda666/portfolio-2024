@@ -34,7 +34,7 @@ const ParallaxImage = ({
     console.log(wrapperHeight, innerHeight);
 
     gsap.to(imageInner, {
-      y: dist * -0.15,
+      y: dist * 0.5,
       ease: "none",
       duration: 1.25,
       scrollTrigger: {

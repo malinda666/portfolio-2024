@@ -1,10 +1,11 @@
 import Hero from "@/components/views/Hero";
+import Works from "@/components/views/Works";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <section>work</section>
+      <Works />
       <section>about</section>
       <section>contact</section>
     </>
