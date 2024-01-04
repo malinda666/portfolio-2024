@@ -1,3 +1,4 @@
+import About from "@/components/views/About";
 import Hero from "@/components/views/Hero";
 import Works from "@/components/views/Works";
 
@@ -6,7 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <Works />
-      <section>about</section>
+      <About />
       <section>contact</section>
     </>
   );

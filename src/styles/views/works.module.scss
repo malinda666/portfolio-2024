@@ -1,77 +1,185 @@
+@import "../mixins";
+@import "../animations";
+
 .wrapper {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   display: grid;
 
   .inner {
     width: 100%;
     height: auto;
-    // position: relative;
     display: grid;
-    grid-template-rows: auto;
-
+    grid-template-rows: auto 1fr;
+    max-width: calc(60vw);
+    margin: 0 auto;
     overflow: hidden;
 
-    &__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        var(--secondary-foreground),
-        var(--secondary-foreground) 40%,
-        transparent,
-        transparent 40%,
-        transparent 60%,
-        var(--secondary-foreground) 50%,
-        var(--secondary-foreground)
-      );
+    .heading {
+      position: relative;
+      margin-bottom: var(--size3);
+      text-transform: uppercase;
+      font-family: var(--font-semi);
+      mix-blend-mode: exclusion;
+      color: var(--primary);
+      z-index: 2;
     }
-
     .projects {
-      //   transform: translateY(40%);
-      max-width: calc(60vw);
       width: 100%;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
 
       .project {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: calc(var(--size1));
-        margin-bottom: var(--size6);
-
+        position: relative;
+        font-size: var(--size3);
+        width: 100%;
         cursor: pointer;
+
         &__title {
-          font-size: var(--size3);
-          //   text-transform: uppercase;
-          font-family: var(--font-semi);
-          letter-spacing: -0.2rem;
+          --size: 4vw;
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          gap: var(--size6);
+          justify-content: space-between;
+          overflow: hidden;
+          position: relative;
+          z-index: 2;
+
+          &___arrow {
+            position: relative;
+            will-change: transform;
+            transition: transform var(--transition), opacity var(--transition);
+            transform: translate(-90%, 90%) scale(0.2);
+            opacity: 0;
+          }
+
+          &___text___wrapper {
+            position: absolute;
+            height: var(--size);
+            width: 100%;
+            overflow: hidden;
+            will-change: transform;
+            // padding-right: var(--size5);
+            transition: transform var(--transition);
+            padding-bottom: var(--size5);
+
+            .title {
+              padding-bottom: var(--size5);
+              position: absolute;
+              // left: 0;
+              // top: 0;
+              white-space: nowrap;
+              transition: clip-path var(--transition);
+              &:first-child {
+                color: var(--primary-foreground);
+              }
+              &:nth-child(2) {
+                color: var(--secondary);
+                clip-path: inset(0% 100% 0% 0%);
+              }
+            }
+          }
+          &___project__tags {
+            position: relative;
+            font-size: 1rem;
+            text-transform: uppercase;
+            overflow: hidden;
+            &___tag {
+              display: inline-block;
+              margin-left: var(--size6);
+              transform: translateY(100%);
+              color: var(--secondary);
+              mix-blend-mode: difference;
+              opacity: 0;
+              transition: transform var(--transition), opacity var(--transition);
+              @include delay(transition, 3, 0.05s);
+            }
+          }
         }
 
-        &__image {
-          --width: calc(100vw / 4);
-          position: absolute;
-          left: calc(100vw - calc(var(--width) * 1.5));
-          top: calc((calc(100vh - var(--width) + var(--size1)) / 2));
-          aspect-ratio: 3/4;
-          width: var(--width);
-          opacity: 0;
-        }
+        &:hover {
+          .project__images {
+            &__image {
+              clip-path: inset(0% 0% 0% 0%);
+              transform: scaleY(1);
 
-        &.active {
-          &__image {
-            opacity: 1;
+              > img {
+                transform: scale(1);
+              }
+            }
+          }
+          .project__title {
+            &___arrow {
+              transform: translate(0%, 0%) scale(1);
+              opacity: 1;
+            }
+
+            &___text___wrapper {
+              transform: translate(var(--size), 0%);
+              .title {
+                &:nth-child(2) {
+                  clip-path: inset(0% 0% 0% 0%);
+                }
+              }
+            }
+            &___project__tags {
+              &___tag {
+                opacity: 1;
+                transform: translateY(0%);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .projects__images {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      .project__images___inner {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        inset: 0;
+        z-index: -1;
+        display: grid;
+        grid-template-columns: repeat(25, 4%);
+        grid-template-rows: repeat(25, 4%);
+        grid-auto-flow: column;
+        gap: 1vw;
+        --img-size: calc(100vw / 4);
+
+        .project__image {
+          position: relative;
+          clip-path: inset(100% 0% 0% 0%);
+          transform: scale(0.6);
+          transition: clip-path var(--transition), transform var(--transition);
+          transform-origin: bottom center;
+          overflow: hidden;
+
+          > img {
+            transform-origin: bottom center;
+            transform: scale(1.4);
+            transition: transform var(--transition);
+          }
+
+          &.active {
+            clip-path: inset(0% 0% 0% 0%);
+          }
+
+          &:nth-child(1) {
+            grid-area: 1/1/15/4;
+          }
+          &:nth-child(2) {
+            grid-area: 1/6/8/16;
+          }
+          &:nth-child(3) {
+            grid-area: 3/17/18/22;
           }
         }
       }

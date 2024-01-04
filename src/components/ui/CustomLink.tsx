@@ -11,15 +11,15 @@ const CustomLink = ({
   className?: string;
 }) => {
   return (
-    <div className={`${s.wrapper} ${className}`}>
-      <span className={s.text}>{text}</span>
+    <div className={`${s.wrapper} ${className ? className : ""}`}>
       <div className={s.arrows}>
-        <span className={`${s.arrow} ${s.upper}`}>
+        <span className={`${s.arrow}`}>
           <Arrow />
         </span>
-        <span className={`${s.arrow} ${s.lower}`}>
-          <Arrow />
-        </span>
+      </div>
+      <div className={s.text__wrapper}>
+        <span className={s.text}>{text}</span>
+        <span className={s.text}>{text}</span>
       </div>
     </div>
   );

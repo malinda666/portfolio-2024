@@ -1,3 +1,4 @@
+// responsiveness
 @mixin for-phone-only {
   @media (max-width: 599px) {
     @content;
@@ -21,5 +22,15 @@
 @mixin for-big-desktop-up {
   @media (min-width: 1800px) {
     @content;
+  }
+}
+
+//animation
+@mixin delay($rule, $number, $value) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      -webkit-#{$rule}-delay: (#{$i * $value});
+      #{$rule}-delay: (#{$i * $value});
+    }
   }
 }

@@ -31,8 +31,6 @@ const ParallaxImage = ({
     const { height: innerHeight } = imageInner.getBoundingClientRect();
     const dist = innerHeight - wrapperHeight;
 
-    console.log(wrapperHeight, innerHeight);
-
     gsap.to(imageInner, {
       y: dist * 0.5,
       ease: "none",

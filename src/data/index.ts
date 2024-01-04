@@ -12,7 +12,7 @@ export const projects = [
     img_1: "/assets/images/projects/1-1.jpg",
     img_2: "/assets/images/projects/1-2.png",
     img_3: "/assets/images/projects/1-3.png",
-    tags: "PHP",
+    tags: ["React", "TailwindCSS"],
   },
   {
     id: "gPsbDCBV-jj26-2E8O-Y3od-xQPXY7MD5bcS",
@@ -26,7 +26,7 @@ export const projects = [
     img_1: "/assets/images/projects/2-1.png",
     img_2: "/assets/images/projects/2-2.png",
     img_3: "/assets/images/projects/2-3.png",
-    tags: "Java",
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: "mOKH3s3R-BAIK-Ca6n-5j29-O3gOU8X6h9Oa",
@@ -40,7 +40,7 @@ export const projects = [
     img_1: "/assets/images/projects/3-1.png",
     img_2: "/assets/images/projects/3-2.png",
     img_3: "/assets/images/projects/3-3.png",
-    tags: "Ruby",
+    tags: ["React", "TailwindCSS"],
   },
   {
     id: "6i222f3z-52Qz-gIkL-Ioz0-q7dq39RQ99dh",
@@ -54,7 +54,7 @@ export const projects = [
     img_1: "/assets/images/projects/4-1.png",
     img_2: "/assets/images/projects/4-2.png",
     img_3: "/assets/images/projects/4-3.png",
-    tags: "Python",
+    tags: ["React", "Next.js", "TailwindCSS"],
   },
   {
     id: "2JyN3z1p-7POl-5FO9-1FaF-60s7FF2KK8uI",
@@ -68,6 +68,6 @@ export const projects = [
     img_1: "/assets/images/projects/5-1.png",
     img_2: "/assets/images/projects/5-2.png",
     img_3: "/assets/images/projects/5-3.png",
-    tags: "JavaScript",
+    tags: ["JavaScript", "HTML", "CSS"],
   },
 ];

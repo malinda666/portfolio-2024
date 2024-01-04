@@ -5,6 +5,7 @@ import React, { useRef } from "react";
 import s from "@/styles/views/works.module.scss";
 import { projects } from "@/data";
 import Project from "./Project";
+import Image from "next/image";
 
 const Works = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -34,9 +35,29 @@ const Works = () => {
     <section>
       <div className={s.wrapper} ref={wrapperRef}>
         <div className={s.inner}>
+          <div className={s.heading}>&mdash; selected projects</div>
           <div className={s.projects}>
             {projects.map((project) => (
               <Project project={project} key={project.id} />
+            ))}
+          </div>
+          <div className={s.projects__images} id="thumbs">
+            {projects.map((project) => (
+              <div
+                className={s.project__images___inner}
+                key={project.id}
+                data-project={project.id}
+              >
+                <div className={s.project__image} id="thumb1">
+                  <Image src={project.img_1} alt={project.title} fill />
+                </div>
+                <div className={s.project__image} id="thumb2">
+                  <Image src={project.img_2} alt={project.title} fill />
+                </div>
+                <div className={s.project__image} id="thumb3">
+                  <Image src={project.img_3} alt={project.title} fill />
+                </div>
+              </div>
             ))}
           </div>
         </div>
