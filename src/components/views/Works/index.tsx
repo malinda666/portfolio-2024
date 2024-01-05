@@ -41,7 +41,7 @@ const Works = () => {
               <Project project={project} key={project.id} />
             ))}
           </div>
-          <div className={s.projects__images} id="thumbs">
+          {/* <div className={s.projects__images} id="thumbs">
             {projects.map((project) => (
               <div
                 className={s.project__images___inner}
@@ -51,15 +51,10 @@ const Works = () => {
                 <div className={s.project__image} id="thumb1">
                   <Image src={project.img_1} alt={project.title} fill />
                 </div>
-                <div className={s.project__image} id="thumb2">
-                  <Image src={project.img_2} alt={project.title} fill />
-                </div>
-                <div className={s.project__image} id="thumb3">
-                  <Image src={project.img_3} alt={project.title} fill />
-                </div>
+                
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

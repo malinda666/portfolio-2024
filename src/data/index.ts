@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: "pqr50fpw-r7EK-B4f6-Auf3-Gq76OV382Db5",
-    title: "Web Project 1",
+    title: "MusicDash",
     link: "https://-+\\.UIq/5**",
     main_desc:
       "at ultrices nunc justo at odio. Sed ut metus id nibh ultrices ultrices. Sed id mi sit amet elit fringilla feugiat. Sed auctor",
@@ -16,7 +16,7 @@ export const projects = [
   },
   {
     id: "gPsbDCBV-jj26-2E8O-Y3od-xQPXY7MD5bcS",
-    title: "Tech Innovators",
+    title: "Soundbreaker",
     link: "http://x+\\.FIuaZ/w**",
     main_desc: "lectus est tincidunt neque",
     desc_1:
@@ -26,11 +26,11 @@ export const projects = [
     img_1: "/assets/images/projects/2-1.png",
     img_2: "/assets/images/projects/2-2.png",
     img_3: "/assets/images/projects/2-3.png",
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["NextJS", "TailwindCSS", "TypeScript", "AWS"],
   },
   {
     id: "mOKH3s3R-BAIK-Ca6n-5j29-O3gOU8X6h9Oa",
-    title: "Digital Solutions",
+    title: "Brandermine",
     link: "http://v+\\.vqAB/l**",
     main_desc: "lectus est tincidunt neque",
     desc_1:
@@ -44,7 +44,7 @@ export const projects = [
   },
   {
     id: "6i222f3z-52Qz-gIkL-Ioz0-q7dq39RQ99dh",
-    title: "Digital Solutions",
+    title: "Bob Shami Portfolio",
     link: "http://c+\\.by/6**",
     main_desc: "nec luctus felis nunc id metus.",
     desc_1:
@@ -54,11 +54,11 @@ export const projects = [
     img_1: "/assets/images/projects/4-1.png",
     img_2: "/assets/images/projects/4-2.png",
     img_3: "/assets/images/projects/4-3.png",
-    tags: ["React", "Next.js", "TailwindCSS"],
+    tags: ["React", "NextJS", "TailwindCSS"],
   },
   {
     id: "2JyN3z1p-7POl-5FO9-1FaF-60s7FF2KK8uI",
-    title: "Tech Innovators",
+    title: "Zealmart",
     link: "https://U+\\.NQ/0**",
     main_desc: "turpis ex tincidunt odio",
     desc_1:
@@ -68,6 +68,6 @@ export const projects = [
     img_1: "/assets/images/projects/5-1.png",
     img_2: "/assets/images/projects/5-2.png",
     img_3: "/assets/images/projects/5-3.png",
-    tags: ["JavaScript", "HTML", "CSS"],
+    tags: ["NextJS", "TailwindCSS"],
   },
 ];

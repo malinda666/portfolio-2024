@@ -22,19 +22,12 @@ const Project = ({ project }: { project: any }) => {
     if (!wrapperRef.current) return;
 
     const w = wrapperRef.current;
-    const thumbWrapper = document.querySelector("#thumbs");
-    if (!thumbWrapper) return;
-    const thumb = thumbWrapper.querySelector(`[data-project="${project.id}"]`);
-    const thumbs = thumb?.querySelectorAll("div");
-    const thumbImages = thumb?.querySelectorAll("div > img");
-    const xStart = getRandomNumber(15, 60);
-    const yStart = getRandomNumber(15, 60);
+    const thumbWrapper = w.querySelector("#thumb");
 
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "expo.out",
-      },
-    });
+    const thumbImages = thumbWrapper?.querySelectorAll("#thumb > img");
+
+    const xStart = getRandomNumber(30, 75);
+    const yStart = getRandomNumber(20, 45);
 
     const X = gsap.quickTo(thumbWrapper, "x", {
       duration: 1,
@@ -44,35 +37,39 @@ const Project = ({ project }: { project: any }) => {
       duration: 1,
       ease: "expo.out",
     });
-    const rotation = gsap.quickTo(thumbWrapper, "rotate", {
-      duration: 1,
-      ease: "expo.out",
-    });
 
     const onMouseLeave = (e: MouseEvent) => {
-      if (!thumb) return;
+      if (!thumbWrapper) return;
 
       X(0);
       Y(0);
-      rotation(0);
-      // O(0);
       gsap
-        .timeline()
-        .to([thumbs], {
-          clipPath: "inset(100% 0% 0% 0%)",
-          scale: 0.6,
-        })
+        .timeline({ defaults: { ease: "expo.out" } })
+        .set(thumbWrapper, { zIndex: -2 }, 0)
+
+        .to(
+          [thumbWrapper],
+          {
+            clipPath: "inset(100% 0% 0% 0%)",
+            scale: 0.6,
+            opacity: 0,
+          },
+          0
+        )
         .to([thumbImages], { scale: 1.4 }, 0);
     };
 
     const onMouseEnter = (e: MouseEvent) => {};
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!thumb || !thumbWrapper) return;
+      if (!w || !thumbWrapper) return;
       const { clientX, clientY } = e;
       const { left, top, height, width } = thumbWrapper.getBoundingClientRect();
-      const x = map(clientX, 0, width, -xStart, xStart);
-      const y = map(clientY, 0, height, -yStart, yStart);
+      // console.log(left, top, height, width);
+      const _y = clientY - (height + top);
+      const _x = clientX;
+      const x = map(_x, 0, width, -xStart, xStart);
+      const y = map(_y, 0, height, -yStart, yStart);
       const rotate = map(clientY, 0, height, -yStart, xStart);
 
       X(x);
@@ -81,11 +78,24 @@ const Project = ({ project }: { project: any }) => {
       // O(1);
       // C(0);
       gsap
-        .timeline()
-        .to([thumbs], {
-          clipPath: "inset(0% 0% 0% 0%)",
-          scale: 1,
-        })
+        .timeline({ defaults: { ease: "expo.out" } })
+        .set(thumbWrapper, { zIndex: -1 }, 0)
+        .to(
+          thumbWrapper,
+          {
+            opacity: 1,
+            duration: 0.45,
+          },
+          0
+        )
+        .to(
+          [thumbWrapper],
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            scale: 1,
+          },
+          0
+        )
         .to([thumbImages], { scale: 1 }, 0);
     };
 
@@ -124,9 +134,9 @@ const Project = ({ project }: { project: any }) => {
         </div>
       </div>
 
-      {/* <div className={s.project__image} id="thumb">
+      <div className={s.project__image} id="thumb">
         <Image src={project.img_1} alt={project.title} fill />
-      </div> */}
+      </div>
     </div>
   );
 };
