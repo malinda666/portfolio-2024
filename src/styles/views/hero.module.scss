@@ -1,6 +1,7 @@
 @import "../mixins";
 
 .wrapper {
+  padding-top: var(--size1);
   .title {
     font-size: var(--size1);
     display: grid;
@@ -65,7 +66,7 @@
       position: absolute;
       font-size: var(--size4);
       z-index: 3;
-      max-width: calc(60vw);
+      max-width: var(--container-width);
       text-align: center;
 
       &___inner {

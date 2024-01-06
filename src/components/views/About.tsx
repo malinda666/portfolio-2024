@@ -4,10 +4,14 @@ import s from "@/styles/views/about.module.scss";
 import Image from "next/image";
 import ParallaxImage from "../ui/ParallaxImage";
 import image from "../../../public/assets/images/abstract-1.jpg";
+import SectionWrapper from "../ui/SectionWrapper";
+import Marquee from "../ui/Marquee";
 
 const About = () => {
   return (
-    <section className={s.wrapper}>
+    <SectionWrapper>
+      <Marquee text="frontend" direction="right" />
+      <Marquee text="developer" direction="left" />
       <div className={s.inner}>
         <ParallaxImage src={image} className={s.about__image} />
         {/* <div className={s.about__image}>
@@ -29,7 +33,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

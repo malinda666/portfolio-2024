@@ -12,13 +12,16 @@
   --font-thin: "Aspekta Thin";
   --font-bold: "Aspekta Bold";
   --font-semi: "Overused Grotesk Semi";
+  --font-big: "Monument";
 
   // colors
   --primary: rgba(237, 237, 237, 1);
   --secondary: rgba(35, 35, 35, 1);
   --secondary-foreground: rgba(237, 237, 237, 0.9);
   --primary-foreground: rgba(153, 153, 153, 1);
+  --light-secondary: lighten($color: rgba(153, 153, 153, 1), $amount: 25);
 
   // misc
   --transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  --container-width: 60vw;
 }

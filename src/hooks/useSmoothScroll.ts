@@ -25,13 +25,13 @@ export default function useSmoothScroll() {
 
   useLayoutEffect(() => {
     const lenis = new Lenis({
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       //   duration: 2,
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
+      // orientation: "vertical",
+      // gestureOrientation: "vertical",
+      // smoothWheel: true,
+      // smoothTouch: false,
+      // touchMultiplier: 2,
     });
     setLenis(lenis);
 

@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  //   top: -15%;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  gap: var(--size2);
+  transform-origin: top;
+  overflow: hidden;
+
+  //   width: 100vw;
+
+  > span {
+    font-size: calc(var(--size1) * 1.66666667);
+    font-family: var(--font-big);
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px
+      lighten($color: rgba(153, 153, 153, 1), $amount: 25);
+    color: transparent;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+  }
+}

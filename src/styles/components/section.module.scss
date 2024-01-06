@@ -1,0 +1,8 @@
+.wrapper {
+  position: relative;
+  // padding: var(--size2) 0;
+
+  &.full {
+    min-height: 100vh;
+  }
+}

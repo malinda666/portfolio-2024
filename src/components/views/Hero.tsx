@@ -3,12 +3,12 @@ import React from "react";
 import image from "../../../public/assets/images/abstract-1.jpg";
 
 import s from "@/styles/views/hero.module.scss";
-import Image from "next/image";
 import ParallaxImage from "../ui/ParallaxImage";
+import SectionWrapper from "../ui/SectionWrapper";
 
 const Hero = () => {
   return (
-    <section>
+    <SectionWrapper>
       <div className={s.wrapper}>
         <h1 className={s.title}>
           <div className={s.title__inner}>
@@ -17,7 +17,6 @@ const Hero = () => {
           <div className={s.title__inner}>
             <span className={s.title__inner___item}>Your</span>
           </div>
-          {/* <div className={s.title__inner}></div> */}
           <div className={s.title__inner}>
             <span className={s.title__inner___item}>Digital&nbsp;</span>
             <span className={s.title__inner___item}>Potential</span>
@@ -35,7 +34,7 @@ const Hero = () => {
           <ParallaxImage src={image} className={s.description__bg} />
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

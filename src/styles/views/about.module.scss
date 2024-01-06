@@ -1,7 +1,8 @@
 .inner {
   position: relative;
-  max-width: calc(60vw);
+  max-width: var(--container-width);
   margin: 0 auto;
+  padding: var(--size1) 0;
 
   height: 100%;
   //   display: flex;
@@ -34,8 +35,4 @@
     aspect-ratio: 3/4;
     max-height: 66.6667%;
   }
-}
-.wrapper {
-  min-height: auto;
-  padding-bottom: var(--size2);
 }
