@@ -14,7 +14,7 @@ const Works = () => {
         <div className={s.wrapper}>
           <div className={s.inner}>
             <div className={s.heading}>&mdash; selected projects</div>
-            <div className={s.projects}>
+            <div className={s.projects} id="projects">
               {projects.map((project) => (
                 <Project project={project} key={project.id} />
               ))}

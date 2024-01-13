@@ -21,9 +21,9 @@
       position: relative;
       margin-bottom: var(--size3);
       text-transform: uppercase;
-      font-family: var(--font-semi);
-      mix-blend-mode: exclusion;
-      color: var(--primary);
+      font-family: var(--font-italic);
+      // mix-blend-mode: exclusion;
+      color: var(--secondary);
       z-index: 2;
     }
     .projects {
@@ -41,11 +41,7 @@
         width: 100%;
         cursor: pointer;
         --img-size: calc(100vw / 4);
-        z-index: 2;
-
-        &:not([active="true"]) {
-          z-index: 0;
-        }
+        z-index: 1;
 
         &::after,
         &::before {
@@ -74,7 +70,8 @@
           justify-content: space-between;
           overflow: hidden;
           position: relative;
-
+          mix-blend-mode: multiply;
+          font-family: var(--font-semi);
           &___arrow {
             position: relative;
             will-change: transform;
@@ -109,8 +106,10 @@
               }
             }
           }
-          &___project__tags {
-            position: relative;
+          &__tags,
+          &__tags__temp {
+            position: absolute;
+            right: 0;
             font-size: 1rem;
             text-transform: uppercase;
             overflow: hidden;
@@ -119,21 +118,34 @@
             align-items: center;
             justify-content: flex-end;
             gap: 0.25rem;
-            &___tag {
+            perspective: 200px;
+            color: var(--secondary);
+            & > span {
               display: inline-block;
               padding: 0.35rem 0.75rem;
-              border-radius: 5rem;
-              color: var(--primary);
-              mix-blend-mode: exclusion;
-              background-color: var(--secondary);
-              transform: translateY(105%);
-              opacity: 0;
+              border-radius: 10rem;
               transition: transform var(--transition), opacity var(--transition);
               @include delay(transition, 4, 0.05s);
             }
           }
+          &__tags {
+            & > span {
+              opacity: 1;
+              transform: translateY(0%);
+              font-family: var(--font-thin);
+            }
+          }
+          &__tags__temp {
+            & > span {
+              font-family: var(--font-italic);
+              opacity: 0;
+              transform: translateY(105%) rotate3d(1, 0, 0, -60deg);
+            }
+          }
         }
 
+        // &:not(:hover) + .project .project__title {
+        // }
         &:hover {
           .project__images {
             &__image {
@@ -146,7 +158,7 @@
             }
           }
           .project__title {
-            z-index: 6;
+            // z-index: 3;
             &___arrow {
               transform: translate(0%, 0%) scale(1);
               opacity: 1;
@@ -160,8 +172,14 @@
                 }
               }
             }
-            &___project__tags {
-              &___tag {
+            &__tags {
+              & > span {
+                opacity: 0;
+                transform: translateY(-105%) rotate3d(1, 0, 0, 60deg);
+              }
+            }
+            &__tags__temp {
+              & > span {
                 opacity: 1;
                 transform: translateY(0%);
               }
@@ -176,6 +194,7 @@
         &__image {
           position: absolute;
           top: 0;
+          // top: calc(calc(calc(var(--img-size) / 2.5)) * -1);
           right: 0;
           width: auto;
           height: var(--img-size);
@@ -186,7 +205,10 @@
           transition: clip-path var(--transition), transform var(--transition);
           transform-origin: center;
           overflow: hidden;
-          z-index: -2;
+          pointer-events: none;
+          backface-visibility: hidden;
+          z-index: -1;
+          perspective: 2000px;
           > img {
             transform-origin: center;
             transform: scale(1.4);

@@ -1,31 +1,18 @@
 @font-face {
-  font-family: "Aspekta Regular";
-  src: url("../../public/assets/fonts/Aspekta-500.otf");
+  font-family: "Aspekta Thin";
+  src: url("../../public/assets/fonts/Aspekta-150.otf");
 }
+
 @font-face {
   font-family: "Aspekta Bold";
   src: url("../../public/assets/fonts/Aspekta-750.otf");
 }
-@font-face {
-  font-family: "Aspekta Semi";
-  src: url("../../public/assets/fonts/Aspekta-600.otf");
-}
-@font-face {
-  font-family: "Aspekta Thin";
-  src: url("../../public/assets/fonts/Aspekta-150.otf");
-}
-@font-face {
-  font-family: "Overused Grotesk Bold";
-  src: url("../../public/assets/fonts/OverusedGrotesk-Bold.otf");
-}
+
 @font-face {
   font-family: "Overused Grotesk Semi";
   src: url("../../public/assets/fonts/OverusedGrotesk-SemiBold.otf");
 }
-@font-face {
-  font-family: "Overused Grotesk Regular";
-  src: url("../../public/assets/fonts/OverusedGrotesk-Book.otf");
-}
+
 @font-face {
   font-family: "Overused Grotesk Thin";
   src: url("../../public/assets/fonts/OverusedGrotesk-Light.otf");
@@ -33,4 +20,8 @@
 @font-face {
   font-family: "Monument";
   src: url("../../public/assets/fonts/PPMonumentExtended-Black.otf");
+}
+@font-face {
+  font-family: "Instrument";
+  src: url("../../public/assets/fonts/InstrumentSerif-Italic.otf");
 }

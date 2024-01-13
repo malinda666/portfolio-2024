@@ -14,14 +14,22 @@ const Project = ({ project }: { project: any }) => {
   const thumbRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!thumbRef.current || !wrapperRef.current) return;
+    const container = document.querySelector("#projects");
+    if (!thumbRef.current || !wrapperRef.current || !container) return;
+
+    const w = wrapperRef.current;
+    const thumbImage = thumbRef.current.querySelector("#thumb > img");
+
+    const projects = container.querySelectorAll("#project");
 
     const thumbBounds = thumbRef.current.getBoundingClientRect();
     const wrapperBounds = wrapperRef.current.getBoundingClientRect();
+    const containerBounds = container.getBoundingClientRect();
     let mouse = { x: 0, y: 0 };
     let mousePosCache = mouse;
 
     const updateMouse = (ev: MouseEvent) => {
+      w.setAttribute("active", "true");
       mouse = getMousePos(ev);
       // cache the mouse position
       const direction = {
@@ -36,44 +44,57 @@ const Project = ({ project }: { project: any }) => {
 
       // new translation values
       const tx = Math.abs(mouse.x - wrapperBounds.left) - thumbBounds.width / 2;
-      const ty = Math.abs(mouse.y - thumbBounds.top) - window.innerHeight / 2;
+      const ty = Math.abs(mouse.y - wrapperBounds.top) - thumbBounds.height / 2;
       // new rotation value
-      const tr = map(mouseDistanceX, 0, 300, 0, direction.x < 0 ? 60 : -60);
+      const tr = map(mouseDistanceX, 0, 500, 0, direction.x < 0 ? 9 : -9);
 
-      const x = map(tx, 0, wrapperBounds.width, -100, 100);
-      const y = map(ty, 0, -wrapperBounds.height, -5, 5);
+      const x = map(tx, 0, wrapperBounds.width, -150, 150);
+      const y = map(ty, 0, -thumbBounds.height / 2, -10, 10);
 
-      gsap.to(thumbRef.current, {
-        x,
-        y,
-        rotateX: tr,
-      });
+      gsap
+        .timeline({ defaults: { ease: "expo.out" } })
+        .set(
+          thumbRef.current,
+          {
+            //  zIndex: 6,
+            transformStyle: "preserve-3d",
+          },
+          0
+        )
+        .set(projects, { zIndex: -1 }, 0)
+        .set(w, { zIndex: 2 }, 0)
+
+        .to(
+          thumbRef.current,
+          {
+            clipPath: "inset(0% round 0.25rem)",
+            scale: 1,
+            opacity: 1,
+          },
+          0
+        )
+        .to(thumbImage, { scale: 1 }, 0)
+        .to(
+          thumbRef.current,
+          {
+            x,
+            y: (thumbBounds.height / 2) * -1,
+            rotation: tr,
+          },
+          0
+        );
     };
-
-    window.addEventListener("mousemove", (ev) => updateMouse(ev));
-    return () => {
-      window.removeEventListener("mousemove", (ev) => updateMouse(ev));
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!wrapperRef.current) return;
-
-    const w = wrapperRef.current;
-    const thumbWrapper = thumbRef.current;
-    w.setAttribute("active", "false");
-
-    const thumbImage = thumbWrapper?.querySelector("#thumb > img");
 
     const onMouseLeave = () => {
-      if (!thumbWrapper) return;
+      if (!thumbRef.current) return;
       w.setAttribute("active", "false");
 
       gsap
         .timeline({ defaults: { ease: "expo.out" } })
-        .set(thumbWrapper, { zIndex: -2 }, 0)
+        .set(thumbRef.current, { zIndex: -1 }, 0)
+        .set(projects, { zIndex: 1 }, 0)
         .to(
-          [thumbWrapper],
+          [thumbRef.current],
           {
             clipPath: "inset(20% round 1.25rem)",
             scale: 0.6,
@@ -84,41 +105,11 @@ const Project = ({ project }: { project: any }) => {
         .to([thumbImage], { scale: 1.4 }, 0);
     };
 
-    const onMouseEnter = () => {
-      if (!w || !thumbWrapper || !thumbImage) return;
-      w.setAttribute("active", "true");
-
-      // rotation(rotate);
-      // O(1);
-      // C(0);
-      gsap
-        .timeline({ defaults: { ease: "expo.out" } })
-        .set(thumbWrapper, { zIndex: 5 }, 0)
-        .to(
-          thumbWrapper,
-          {
-            opacity: 1,
-            duration: 0.45,
-          },
-          0
-        )
-        .to(
-          thumbWrapper,
-          {
-            clipPath: "inset(0% round 0.25rem)",
-            scale: 1,
-            opacity: 1,
-          },
-          0
-        )
-        .to(thumbImage, { scale: 1 }, 0);
-    };
-
+    w.addEventListener("mousemove", (ev) => updateMouse(ev));
     w.addEventListener("mouseleave", onMouseLeave);
-    w.addEventListener("mouseenter", onMouseEnter);
     return () => {
+      w.removeEventListener("mousemove", (ev) => updateMouse(ev));
       w.removeEventListener("mouseleave", onMouseLeave);
-      w.removeEventListener("mouseenter", onMouseEnter);
     };
   }, []);
 
@@ -139,9 +130,16 @@ const Project = ({ project }: { project: any }) => {
           <span className={s.title}>{project.title}</span>
           <span className={s.title}>{project.title}</span>
         </div>
-        <div className={s.project__title___project__tags}>
+        <div className={s.project__title__tags}>
           {project.tags?.map((tag: string) => (
-            <span className={s.project__title___project__tags___tag} key={tag}>
+            <span className={s.project__title__tags___tag} key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className={s.project__title__tags__temp}>
+          {project.tags?.map((tag: string) => (
+            <span className={s.project__title__tags__temp___tag} key={tag}>
               {tag}
             </span>
           ))}
